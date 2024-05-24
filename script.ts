@@ -111,14 +111,19 @@ const persons: Person[] = [
         role: 'World saver'
     }
 ];
+
+function isAdmin(person: Person): person is Admin {
+    return ("role" in person);
+}
+
 function logPerson(person: Person) {
     let additionalInformation: string;
-    if ("role" in person) {
+    if (isAdmin(person)) {
         additionalInformation = person.role;
     } else {
         additionalInformation = person.occupation;
     }
-    console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
+    console.log(`- ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
 
